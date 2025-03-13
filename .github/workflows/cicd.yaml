@@ -18,11 +18,12 @@ jobs:
       - name: Cloning repository
         uses: actions/checkout@v4
 
+      - name: Install pip
+        run: sudo apt install pip
+
       # Сборка докер образа
       - name: Build docker image
-        run: |
-          sudo apt install pip
-          docker build -t usvp/online-store:${{ github.sha }} .
+        run: docker build -t usvp/online-store:${{ github.sha }} .
 
       # Запуск докер образа и проверка его работы
       - name: Start docker image and check health
