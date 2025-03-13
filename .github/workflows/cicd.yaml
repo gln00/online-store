@@ -41,7 +41,7 @@ jobs:
       # для этого можно в ci реализовать push docker image в DockerHub и после при подключении 
       # по ssh в cd спуллить этот образ и запустить его
       - name: Login to DockerHub
-        uses: docker/login-actions@v2
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
