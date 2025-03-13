@@ -16,7 +16,7 @@ RUN python -m venv venv & \
 	virtualenv venv
 
 # Install requirements
-RUN python -m ensurepip --upgrade \
+RUN pip --versoin \
 	/usr/bin/pip install -r requirements.txt
 
 # Start migration and load data in db 
