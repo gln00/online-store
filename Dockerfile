@@ -16,7 +16,7 @@ RUN python -m venv venv & \
 	virtualenv venv
 
 # Install requirements
-RUN apt install -y python3-pip & \
+RUN python -m ensurepip --upgrade \
 	/usr/bin/pip install -r requirements.txt
 
 # Start migration and load data in db 
