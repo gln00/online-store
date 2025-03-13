@@ -21,7 +21,7 @@ jobs:
       # Сборка докер образа
       - name: Build docker image
         run: |
-          apt install pip
+          sudo apt install pip
           docker build -t usvp/online-store:${{ github.sha }} .
 
       # Запуск докер образа и проверка его работы
