@@ -16,7 +16,8 @@ RUN python -m venv venv & \
 	virtualenv venv
 
 # Install requirements
-RUN pip install -r requirements.txt
+RUN apt install -y python3-pip & \
+	pip install -r requirements.txt
 
 # Start migration and load data in db 
 RUN python OnlineStore/manage.py migrate

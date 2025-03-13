@@ -17,9 +17,9 @@ jobs:
       # Клонирование репозитория на раннер
       - name: Cloning repository
         uses: actions/checkout@v4
-
-      - name: Install pip
-        run: sudo apt install pip
+      #
+      # - name: Install pip
+      #   run: sudo apt install pip
 
       # Сборка докер образа
       - name: Build docker image
