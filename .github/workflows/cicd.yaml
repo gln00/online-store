@@ -19,8 +19,8 @@ jobs:
         uses: actions/checkout@v4
                                                           
         # КОСТЫЛЬ(наверное
-      - name: Add secret_key_django
-        run: echo ${{ secrets.SECRET_KEY_DJANGO }} > .env # Добавляем ключ джанго на раннер
+      # - name: Add secret_key_django
+      #   run: echo ${{ secrets.SECRET_KEY_DJANGO }} > .env # Добавляем ключ джанго на раннер
                                                           # для успешной сборки образа
 
       # Сборка докер образа

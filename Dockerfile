@@ -1,36 +1,3 @@
-# # Basic image
-# FROM python:3.12
-#
-# # Work directory
-# WORKDIR /usr/src/app
-#
-# # Upgrade pip and install virtualenv
-# RUN pip install --upgrade pip & \
-# 	pip install virtualenv
-#
-# # Copy files
-# COPY . .
-#
-# # Activate venv 
-# RUN python -m venv venv & \
-# 	virtualenv venv
-#
-# # Install requirements
-# RUN pip --versoin \
-# 	/usr/bin/pip install -r requirements.txt
-#
-# # Start migration and load data in db 
-# RUN python OnlineStore/manage.py migrate
-# RUN python OnlineStore/manage.py loaddata OnlineStore/data.json
-#
-# # Create user
-# RUN python OnlineStore/manage.py createsuperuser
-#
-# # Port 
-# # EXPOSE 8080
-#
-# CMD ["python3", "OnlineStore/manage.py", "runserver", "0.0.0.0:8000"]
-# Basic image
 FROM python:3.12
 
 # Work directory
@@ -42,7 +9,6 @@ RUN pip install --upgrade pip && \
 
 # Copy files
 COPY . .
-COPY .env /usr/src/app/.env
 
 # Create and activate virtual environment
 RUN python -m venv venv
@@ -50,6 +16,9 @@ ENV PATH="/usr/src/app/venv/bin:$PATH"
 
 # Install requirements
 RUN pip install -r requirements.txt
+
+# Create secret key 
+RUN python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > .env
 
 # Start migration and load data in db
 RUN python OnlineStore/manage.py migrate
