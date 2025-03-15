@@ -16,9 +16,9 @@ ENV PATH="/usr/src/app/venv/bin:$PATH"
 
 # Install requirements
 RUN pip install -r requirements.txt
-RUN python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > .env && \
-	head -n 1 .env | cut -c 1-5 && \
-	ls -lah 
+RUN python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > .env
+RUN head -n 1 .env | cut -c 1-5
+RUN ls -lah
 
 
 # Start migration and load data in db
