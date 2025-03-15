@@ -14,13 +14,13 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      # Клонирование репозитория на раннер
-      - name: Cloning repository
-        uses: actions/checkout@v4
-
       # КОСТЫЛЬ(наверное)
       - name: Add secret_key_django
         run: echo ${{ secrets.SECRET_KEY_DJANGO }} > .env # Добавляем ключ джанго на раннер
+
+          # Клонирование репозитория на раннер
+      - name: Cloning repository
+        uses: actions/checkout@v4
                                                           # для успешной сборки образа
 
       # Сборка докер образа
