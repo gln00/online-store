@@ -42,6 +42,7 @@ RUN pip install --upgrade pip && \
 
 # Copy files
 COPY . .
+COPY .env /usr/src/app/.env
 
 # Create and activate virtual environment
 RUN python -m venv venv
