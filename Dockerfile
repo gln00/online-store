@@ -19,6 +19,7 @@ RUN pip install -r requirements.txt
 
 # Create secret key 
 RUN python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > .env
+RUN ls -la
 
 # Start migration and load data in db
 RUN python OnlineStore/manage.py migrate
