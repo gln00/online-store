@@ -16,10 +16,10 @@ ENV PATH="/usr/src/app/venv/bin:$PATH"
 
 # Install requirements
 RUN pip install -r requirements.txt
+RUN python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > .env && \
+	head -n 1 .env | cut -c 1-5 && \
+	ls -lah 
 
-# Create secret key 
-RUN python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > .env
-RUN ls -la
 
 # Start migration and load data in db
 RUN python OnlineStore/manage.py migrate
@@ -30,3 +30,4 @@ EXPOSE 8000
 
 # Command to run the server
 CMD ["python", "OnlineStore/manage.py", "runserver", "0.0.0.0:8000"]
+
