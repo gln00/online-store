@@ -17,7 +17,7 @@ ENV PATH="/usr/src/app/venv/bin:$PATH"
 # Install requirements
 RUN pip install -r requirements.txt
 RUN python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' > .env
-RUN sed -i '1i\SECRET_KEY=' filename.txt
+RUN sed -i '1i\SECRET_KEY=' .env
 RUN head -n 1 .env | cut -c 1-5
 RUN ls -lah
 
